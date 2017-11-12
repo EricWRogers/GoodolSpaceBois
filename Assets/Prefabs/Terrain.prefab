@@ -47,7 +47,7 @@ TerrainCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918471113787192}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9b4140dbd824e3f408125ca67cca84eb, type: 2}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: db164f5062a5f436fbb63be2879f5d1a, type: 2}
   m_EnableTreeColliders: 1
