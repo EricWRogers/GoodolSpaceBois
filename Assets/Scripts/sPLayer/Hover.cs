@@ -4,7 +4,8 @@ using System.Collections;
 
 public class Hover : MonoBehaviour
 {
-
+    public bool turn;
+    public bool powerSwitch;
     public float speed = 90f;
     public float turnSpeed = 5f;
     public float hoverForce = 65f;
@@ -21,7 +22,14 @@ public class Hover : MonoBehaviour
 
     void Update()
     {
-        powerInput = Input.GetAxis("Vertical");
+        if (powerSwitch)
+        {
+            powerInput = Input.GetAxis("Axis1D.SecondaryIndexTrigger");
+        }
+        if (!powerSwitch)
+        {
+            powerInput = Input.GetAxis("Axis1D.PrimaryIndexTrigger");
+        }
         turnInput = Input.GetAxis("Horizontal");
     }
 
@@ -36,8 +44,8 @@ public class Hover : MonoBehaviour
             Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
             carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
         }
-
-        carRigidbody.AddRelativeForce(0f, 0f, powerInput * speed);
+        if(!turn)
+            carRigidbody.AddRelativeForce(0f, 0f, powerInput * speed);
         carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
 
     }
